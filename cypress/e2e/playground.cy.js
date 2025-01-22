@@ -3,24 +3,24 @@ describe('Cypress Playground', () => {
     cy.visit  ('https://cypress-playground.s3.eu-central-1.amazonaws.com/index.html')
   })
 
-  it('Shows a promotional banner', () => {
+  it('Mostre a pagina web', () => {
     cy.get('#promotional-banner').should('be.visible')
     // implementação do caso de teste.
   })
 
-  it('Clicks the subscribe button and shows a sucess message', () => {
+  it('Clique no botão e mostre a mensagem de sucesso', () => {
     cy.contains('button', 'Subscribe').click( )
 
     cy.get('#success').should('be.visible')
   })
 
-  it('types in an input which "signs" a form, then asserts it is signed', () => {
+  it('Prencher o formulário e confirmar a assinatura', () => {
     cy.get('#signature-textarea').type('victor')
 
     cy.contains('#signature', 'victor').should('be.visible')
   })
 
-  it('types in the signature field, checks the checkbox to see the preview, the unchecks it', () =>{
+  it('Clicar na caixa de seleção, marcar e desmarcar', () =>{
     cy.get('#signature-textarea-with-checkbox').type('victor')
     cy.get('#signature-checkbox').check()
 
@@ -30,7 +30,7 @@ describe('Cypress Playground', () => {
     cy.contains('#signature-triggered-by-check', 'victor').should('not.exist')
   })
 
-  it('checks both possible radios and asserts if it is "on" or "off" ', () => {
+  it('Verificar se está "on" ou "off" ', () => {
     cy.contains('#on-off', 'ON').should('be.visible')
     cy.get('#off').check()
 
@@ -52,7 +52,7 @@ describe('Cypress Playground', () => {
     cy.get('#selection-type').select(1)
   })
 
-  it.only('', () =>{
+  it('', () =>{
 
   })
 
