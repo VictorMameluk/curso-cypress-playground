@@ -78,7 +78,7 @@ describe('Cypress Playground', () => {
     cy.contains('li', 'User ID: 1').should('be.visible')
   })
 
-  it.only('Sobrescrevendo o resultado de uma requisição á nivel de rede', () => {
+  it('Sobrescrevendo o resultado de uma requisição á nivel de rede', () => {
     const todo = require('../fixtures/todo')
 
 
@@ -93,6 +93,20 @@ describe('Cypress Playground', () => {
     cy.contains('li', `Completed: ${todo.completed}`).should('be.visible')
     cy.contains('li', `User ID: ${todo.userId}`).should('be.visible')
 
+  })
+
+  it.only('Protegendo dados sensíveis com cypress', () => {
+    cy.get('#password').type(Cypress.env('password'))
+
+    cy.get('#show-password-checkbox').check()
+
+    cy.get('#password-input input[type="password"]').should('not.exist')
+    cy.get('#password-input input[type="text"]').should('be.visible').and('have.value', Cypress.env('password'))
+
+    cy.get('#show-password-checkbox').uncheck()
+
+    cy.get('#password-input input[type="password"]').should('be.visible')
+    cy.get('#password-input input[type="text"]').should('not.exist')
   })
 
 })
